@@ -9,7 +9,7 @@
 
     <title>Demo</title>
     <style>
-        input {
+        /*input {
             display: none;
         }
 
@@ -23,23 +23,31 @@
 
         input:checked+.box {
             background-color: red;
-        }
+        }*/
     </style>
 
 </head>
 
 <body>
-    <label class="box">
+    <!-- <label class="box">
         <input type='checkbox'>
         <div class="box">
             toggle background-color
         </div>
-    </label>
-    <div class="dv">
-        <p></p>
-    </div>
-    <div class="dv"></div>
-    <div class="dv"></div>
+    </label> -->
+    <div id="root"></div>
+
+    <!-- <a href="#" onclick="console.log('The link was clicked.'); return false">
+        Click me
+    </a> -->
+
+    <form>
+        <label>
+            Name:
+            <input type="text" name="name" />
+        </label>
+        <input type="submit" value="Submit" />
+    </form>
 
     <script src="app.js"></script>
 </body>

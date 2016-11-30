@@ -11,14 +11,14 @@ const gulp = require('gulp'),
 
 gulp.task('browserify-es6', () =>
     browserify({
-        entries: './dev/script/app.es6',
+        entries: './dev/script/app.jsx',
     })
     .plugin([watchify])
     .transform(babelify, {
         presets: ['es2015'],
     })
     .bundle()
-    .on('error', function (err) {
+    .on('error', function(err) {
         console.log(err.toString());
         this.emit('end');
     })
@@ -39,6 +39,6 @@ gulp.task('default', ['compile'], () => {
             baseDir: './dev',
         },
     });
-    gulp.watch('./dev/script/app.es6', ['browserify-es6']);
+    gulp.watch('./dev/script/app.jsx', ['browserify-es6']);
     gulp.watch('./dev').on('change', reload);
 });
