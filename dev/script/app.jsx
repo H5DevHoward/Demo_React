@@ -1,3 +1,6 @@
+import 'babel-polyfill';
+import '../style/style.scss';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -298,6 +301,22 @@ import ReactDOM from 'react-dom';
 // );
 
 
+
+// import AwesomeComponent from './AwesomeComponent.jsx';
+// class App extends React.Component {
+//     render () {
+//         return (
+//           <div>
+//             <p> Hello React!</p>
+//             <AwesomeComponent />
+//           </div>
+//         );
+//     }
+// }
+// ReactDOM.render(
+//     <App />,
+//     document.getElementById('root')
+// );
 
 function BoilingVerdict(props) {
     if (props.celsius >= 100) {
