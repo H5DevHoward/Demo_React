@@ -1,6 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -10,6 +12,466 @@ var _reactDom = require('react-dom');
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// function formatName(user) {
+//     return `${user.firstName} ${user.lastName}`;
+// }
+
+// const user = {
+//     firstName: 'Harper',
+//     lastName: 'Perez',
+// };
+
+// const element = (
+//     <h1>Hello, {formatName(user)}!</h1>
+// );
+
+
+// ReactDOM.render(
+//     element,
+//     document.getElementById('root')
+// );
+
+// class Clock extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {date: new Date()};
+//     }
+//
+//     componentDidMount() {
+//         this.timerID = setInterval(
+//             () => this.tick(),
+//             1000
+//         );
+//     }
+//
+//     componentWillUnmount() {
+//         clearInterval(this.timerID);
+//     }
+//
+//     tick() {
+//         this.setState({
+//             date: new Date(),
+//         });
+//     }
+//
+//     render() {
+//         return (
+//             <div>
+//                 <h1>Hello, world!</h1>
+//                 <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+//             </div>
+//         );
+//     }
+// }
+//
+// ReactDOM.render(
+//     <Clock />,
+//     document.getElementById('root')
+// );
+
+// function Welcome(props) {
+//     return <h1>Hello, {props.name}</h1>;
+// }
+
+// const element = <Welcome name="Sara" />;
+// ReactDOM.render(
+//   element,
+//   document.getElementById('root')
+// );
+
+
+// function Welcome(props) {
+//     return <h1>Hello, {props.name}</h1>;
+// }
+//
+// function App() {
+//     return (
+//         <div>
+//             <Welcome name="Sara" />
+//             <Welcome name="Cahal" />
+//             <Welcome name="Edite" />
+//         </div>
+//     );
+// }
+//
+// ReactDOM.render(
+//     <App />,
+//     document.getElementById('root')
+// );
+
+
+// class Toggle extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {isToggleOn: true};
+
+//         this.handleClick = this.handleClick.bind(this);
+//     }
+
+//     handleClick() {
+//         this.setState(preState => ({
+//             isToggleOn: !preState.isToggleOn,
+//         }));
+//     }
+
+//     render() {
+//         return (
+//             <button onClick={this.handleClick}>
+//                 {this.state.isToggleOn ? 'ON' : 'OFF'}
+//             </button>
+//         );
+//     }
+// }
+
+// function App() {
+//     return (
+//         <div>
+//             <Toggle />
+//             <Toggle />
+//             <Toggle />
+//         </div>
+//     );
+// }
+
+// ReactDOM.render(
+//     <App />,
+//     document.getElementById('root')
+// );
+
+
+// class LoginControl extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {isLoggedIn: false};
+
+//         this.handleLoginClick = this.handleLoginClick.bind(this);
+//         this.handleLogoutClick = this.handleLogoutClick.bind(this);
+//     }
+
+//     handleLoginClick() {
+//         this.setState({
+//             isLoggedIn: true,
+//         });
+//     }
+
+//     handleLogoutClick() {
+//         this.setState({
+//             isLoggedIn: false,
+//         });
+//     }
+
+//     render() {
+//         const isLoggedIn = this.state.isLoggedIn;
+//         let button = null;
+//         if (isLoggedIn) {
+//             button = <LogoutButton onClick={this.handleLogoutClick} />;
+//         } else {
+//             button = <LoginButton onClick={this.handleLoginClick} />;
+//         }
+
+//         return (
+//             <div>
+//                 <Greeting isLoggedIn={isLoggedIn} />
+//                 The user is <b>{isLoggedIn ? 'currently' : 'not'}</b> logged in.
+//                 {button}
+//             </div>
+//         );
+//     }
+// }
+
+// function LoginButton(props) {
+//     return (
+//         <button onClick={props.onClick}>
+//             Login
+//         </button>
+//     );
+// }
+
+// function LogoutButton(props) {
+//     return (
+//         <button onClick={props.onClick}>
+//             Logout
+//         </button>
+//     );
+// }
+
+// function Greeting(props) {
+//     const isLoggedIn = props.isLoggedIn;
+//     if (isLoggedIn) {
+//         return <UserGreeting />;
+//     }
+
+//     return <GuestGreeting />;
+// }
+
+// function UserGreeting(props) {
+//     return <h1>Welcome back!</h1>;
+// }
+
+// function GuestGreeting(props) {
+//     return <h1>Please sign up.</h1>;
+// }
+
+// ReactDOM.render(
+//     <LoginControl />,
+//     document.getElementById('root')
+// );
+
+
+// function NumberList(props) {
+//     const numbers = props.numbers;
+//     const listItems = numbers.map(number =>
+//         <li key={number.toString()}>
+//             {number}
+//         </li>
+//     );
+//     return (
+//         <ul>{listItems}</ul>
+//     );
+// }
+// const numbers = [1, 2, 3, 4, 5];
+// ReactDOM.render(
+//     <NumberList numbers={numbers} />,
+//     document.getElementById('root')
+// );
+
+
+// class NameForm extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//     }
+//     handleSubmit(e) {
+//         alert(`A name was submitted: ${this.input.value}`);
+//         e.preventDefault();
+//     }
+//     render() {
+//         return (
+//             <form onSubmit={this.handleSubmit}>
+//                 <label>
+//                     Name:
+//                     <input type="text" ref={input => this.input = input} />
+//                 </label>
+//                 <input type="submit" value="Submit" />
+//             </form>
+//         );
+//     }
+// }
+// ReactDOM.render(
+//     <NameForm />,
+//     document.getElementById('root')
+// );
+
+
+// class FlavorForm extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             value: 'ccc',
+//         };
+
+//         this.handleChange = this.handleChange.bind(this);
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//     }
+
+//     handleChange(e) {
+//         this.setState({
+//             value: e.target.value,
+//         });
+//     }
+
+//     handleSubmit(e) {
+//         alert(`The selected was submitted: ${this.state.value}`);
+//         e.preventDefault();
+//     }
+
+//     render() {
+//         return (
+//             <form onSubmit={this.handleSubmit}>
+//                 <label>
+//                     Pick your favorite La Croix flavor:
+//                     <select value={this.state.value} onChange={this.handleChange}>
+//                         <option value="aaa">aaa</option>
+//                         <option value="bbb">bbb</option>
+//                         <option value="ccc">ccc</option>
+//                         <option value="ddd">ddd</option>
+//                     </select>
+//                 </label>
+//                 <input type="submit" value="Submit" />
+//             </form>
+//         );
+//     }
+// }
+// ReactDOM.render(
+//     <FlavorForm />,
+//     document.getElementById('root')
+// );
+
+
+function BoilingVerdict(props) {
+    if (props.celsius >= 100) {
+        return _react2.default.createElement(
+            'p',
+            null,
+            'The water would boil.'
+        );
+    }
+
+    return _react2.default.createElement(
+        'p',
+        null,
+        'The water would not boil.'
+    );
+}
+var scaleNames = {
+    ce: 'Celsius',
+    fa: 'Fahrenheit'
+};
+
+var TemperatureInput = function (_React$Component) {
+    _inherits(TemperatureInput, _React$Component);
+
+    function TemperatureInput(props) {
+        _classCallCheck(this, TemperatureInput);
+
+        var _this = _possibleConstructorReturn(this, (TemperatureInput.__proto__ || Object.getPrototypeOf(TemperatureInput)).call(this, props));
+
+        _this.handleChange = _this.handleChange.bind(_this);
+        return _this;
+    }
+
+    _createClass(TemperatureInput, [{
+        key: 'handleChange',
+        value: function handleChange(e) {
+            this.props.onChange(e.target.value);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var value = this.props.value;
+            var scale = this.props.scale;
+
+            return _react2.default.createElement(
+                'fieldset',
+                null,
+                _react2.default.createElement(
+                    'legend',
+                    null,
+                    'Enter temperature in ',
+                    scaleNames[scale],
+                    ':'
+                ),
+                _react2.default.createElement('input', { value: value, onChange: this.handleChange })
+            );
+        }
+    }]);
+
+    return TemperatureInput;
+}(_react2.default.Component);
+
+function BoilingVerdict(props) {
+    if (props.celsius >= 100) {
+        return _react2.default.createElement(
+            'p',
+            null,
+            'The water would boil.'
+        );
+    }
+
+    return _react2.default.createElement(
+        'p',
+        null,
+        'The water would not boil.'
+    );
+}
+function tryConvert(value, convert) {
+    var input = parseFloat(value);
+    if (Number.isNaN(input)) {
+        return '';
+    }
+    var output = convert(input);
+    var rounded = Math.round(output * 1000) / 1000;
+
+    return rounded.toString();
+}
+function toCelsius(fahrenheit) {
+    return (fahrenheit - 32) * 5 / 9;
+}
+
+function toFahrenheit(celsius) {
+    return celsius * 9 / 5 + 32;
+}
+
+var Calculator = function (_React$Component2) {
+    _inherits(Calculator, _React$Component2);
+
+    function Calculator(props) {
+        _classCallCheck(this, Calculator);
+
+        var _this2 = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
+
+        _this2.state = {
+            value: '',
+            scale: 'ce'
+        };
+
+        _this2.handleCelsiusChange = _this2.handleCelsiusChange.bind(_this2);
+        _this2.handleFahrenheitChange = _this2.handleFahrenheitChange.bind(_this2);
+        return _this2;
+    }
+
+    _createClass(Calculator, [{
+        key: 'handleCelsiusChange',
+        value: function handleCelsiusChange(value) {
+            this.setState({
+                scale: 'ce',
+                value: value
+            });
+        }
+    }, {
+        key: 'handleFahrenheitChange',
+        value: function handleFahrenheitChange(value) {
+            this.setState({
+                scale: 'fa',
+                value: value
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var scale = this.state.scale;
+            var value = this.state.value;
+            var celsius = scale === 'fa' ? tryConvert(value, toCelsius) : value;
+            var fahrenheit = scale === 'ce' ? tryConvert(value, toFahrenheit) : value;
+
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(TemperatureInput, {
+                    scale: 'ce',
+                    value: celsius,
+                    onChange: this.handleCelsiusChange }),
+                _react2.default.createElement(TemperatureInput, {
+                    scale: 'fa',
+                    value: fahrenheit,
+                    onChange: this.handleFahrenheitChange }),
+                _react2.default.createElement(BoilingVerdict, {
+                    celsius: parseFloat(celsius) })
+            );
+        }
+    }]);
+
+    return Calculator;
+}(_react2.default.Component);
+
+_reactDom2.default.render(_react2.default.createElement(Calculator, null), document.getElementById('root'));
 
 },{"react":178,"react-dom":27}],2:[function(require,module,exports){
 (function (process){
