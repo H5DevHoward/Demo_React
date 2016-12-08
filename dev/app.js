@@ -59,8 +59,6 @@
 
 	'use strict';
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
 	__webpack_require__(/*! babel-polyfill */ 2);
 	
 	__webpack_require__(/*! ../style/style.scss */ 299);
@@ -73,483 +71,21 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
+	var _ShoppingCartComponent = __webpack_require__(/*! ./component/ShoppingCartComponent.jsx */ 479);
+	
+	var _ShoppingCartComponent2 = _interopRequireDefault(_ShoppingCartComponent);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	// function formatName(user) {
-	//     return `${user.firstName} ${user.lastName}`;
-	// }
-	
-	// const user = {
-	//     firstName: 'Harper',
-	//     lastName: 'Perez',
-	// };
-	
-	// const element = (
-	//     <h1>Hello, {formatName(user)}!</h1>
-	// );
-	
-	
-	// ReactDOM.render(
-	//     element,
-	//     document.getElementById('root')
-	// );
-	
-	// class Clock extends React.Component {
-	//     constructor(props) {
-	//         super(props);
-	//         this.state = {date: new Date()};
-	//     }
-	//
-	//     componentDidMount() {
-	//         this.timerID = setInterval(
-	//             () => this.tick(),
-	//             1000
-	//         );
-	//     }
-	//
-	//     componentWillUnmount() {
-	//         clearInterval(this.timerID);
-	//     }
-	//
-	//     tick() {
-	//         this.setState({
-	//             date: new Date(),
-	//         });
-	//     }
-	//
-	//     render() {
-	//         return (
-	//             <div>
-	//                 <h1>Hello, world!</h1>
-	//                 <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-	//             </div>
-	//         );
-	//     }
-	// }
-	//
-	// ReactDOM.render(
-	//     <Clock />,
-	//     document.getElementById('root')
-	// );
-	
-	// function Welcome(props) {
-	//     return <h1>Hello, {props.name}</h1>;
-	// }
-	
-	// const element = <Welcome name="Sara" />;
-	// ReactDOM.render(
-	//   element,
-	//   document.getElementById('root')
-	// );
-	
-	
-	// function Welcome(props) {
-	//     return <h1>Hello, {props.name}</h1>;
-	// }
-	//
-	// function App() {
-	//     return (
-	//         <div>
-	//             <Welcome name="Sara" />
-	//             <Welcome name="Cahal" />
-	//             <Welcome name="Edite" />
-	//         </div>
-	//     );
-	// }
-	//
-	// ReactDOM.render(
-	//     <App />,
-	//     document.getElementById('root')
-	// );
-	
-	
-	// class Toggle extends React.Component {
-	//     constructor(props) {
-	//         super(props);
-	//         this.state = {isToggleOn: true};
-	
-	//         this.handleClick = this.handleClick.bind(this);
-	//     }
-	
-	//     handleClick() {
-	//         this.setState(preState => ({
-	//             isToggleOn: !preState.isToggleOn,
-	//         }));
-	//     }
-	
-	//     render() {
-	//         return (
-	//             <button onClick={this.handleClick}>
-	//                 {this.state.isToggleOn ? 'ON' : 'OFF'}
-	//             </button>
-	//         );
-	//     }
-	// }
-	
-	// function App() {
-	//     return (
-	//         <div>
-	//             <Toggle />
-	//             <Toggle />
-	//             <Toggle />
-	//         </div>
-	//     );
-	// }
-	
-	// ReactDOM.render(
-	//     <App />,
-	//     document.getElementById('root')
-	// );
-	
-	
-	// class LoginControl extends React.Component {
-	//     constructor(props) {
-	//         super(props);
-	//         this.state = {isLoggedIn: false};
-	
-	//         this.handleLoginClick = this.handleLoginClick.bind(this);
-	//         this.handleLogoutClick = this.handleLogoutClick.bind(this);
-	//     }
-	
-	//     handleLoginClick() {
-	//         this.setState({
-	//             isLoggedIn: true,
-	//         });
-	//     }
-	
-	//     handleLogoutClick() {
-	//         this.setState({
-	//             isLoggedIn: false,
-	//         });
-	//     }
-	
-	//     render() {
-	//         const isLoggedIn = this.state.isLoggedIn;
-	//         let button = null;
-	//         if (isLoggedIn) {
-	//             button = <LogoutButton onClick={this.handleLogoutClick} />;
-	//         } else {
-	//             button = <LoginButton onClick={this.handleLoginClick} />;
-	//         }
-	
-	//         return (
-	//             <div>
-	//                 <Greeting isLoggedIn={isLoggedIn} />
-	//                 The user is <b>{isLoggedIn ? 'currently' : 'not'}</b> logged in.
-	//                 {button}
-	//             </div>
-	//         );
-	//     }
-	// }
-	
-	// function LoginButton(props) {
-	//     return (
-	//         <button onClick={props.onClick}>
-	//             Login
-	//         </button>
-	//     );
-	// }
-	
-	// function LogoutButton(props) {
-	//     return (
-	//         <button onClick={props.onClick}>
-	//             Logout
-	//         </button>
-	//     );
-	// }
-	
-	// function Greeting(props) {
-	//     const isLoggedIn = props.isLoggedIn;
-	//     if (isLoggedIn) {
-	//         return <UserGreeting />;
-	//     }
-	
-	//     return <GuestGreeting />;
-	// }
-	
-	// function UserGreeting(props) {
-	//     return <h1>Welcome back!</h1>;
-	// }
-	
-	// function GuestGreeting(props) {
-	//     return <h1>Please sign up.</h1>;
-	// }
-	
-	// ReactDOM.render(
-	//     <LoginControl />,
-	//     document.getElementById('root')
-	// );
-	
-	
-	// function NumberList(props) {
-	//     const numbers = props.numbers;
-	//     const listItems = numbers.map(number =>
-	//         <li key={number.toString()}>
-	//             {number}
-	//         </li>
-	//     );
-	//     return (
-	//         <ul>{listItems}</ul>
-	//     );
-	// }
-	// const numbers = [1, 2, 3, 4, 5];
-	// ReactDOM.render(
-	//     <NumberList numbers={numbers} />,
-	//     document.getElementById('root')
-	// );
-	
-	
-	// class NameForm extends React.Component {
-	//     constructor(props) {
-	//         super(props);
-	//         this.handleSubmit = this.handleSubmit.bind(this);
-	//     }
-	//     handleSubmit(e) {
-	//         alert(`A name was submitted: ${this.input.value}`);
-	//         e.preventDefault();
-	//     }
-	//     render() {
-	//         return (
-	//             <form onSubmit={this.handleSubmit}>
-	//                 <label>
-	//                     Name:
-	//                     <input type="text" ref={input => this.input = input} />
-	//                 </label>
-	//                 <input type="submit" value="Submit" />
-	//             </form>
-	//         );
-	//     }
-	// }
-	// ReactDOM.render(
-	//     <NameForm />,
-	//     document.getElementById('root')
-	// );
-	
-	
-	// class FlavorForm extends React.Component {
-	//     constructor(props) {
-	//         super(props);
-	//         this.state = {
-	//             value: 'ccc',
-	//         };
-	
-	//         this.handleChange = this.handleChange.bind(this);
-	//         this.handleSubmit = this.handleSubmit.bind(this);
-	//     }
-	
-	//     handleChange(e) {
-	//         this.setState({
-	//             value: e.target.value,
-	//         });
-	//     }
-	
-	//     handleSubmit(e) {
-	//         alert(`The selected was submitted: ${this.state.value}`);
-	//         e.preventDefault();
-	//     }
-	
-	//     render() {
-	//         return (
-	//             <form onSubmit={this.handleSubmit}>
-	//                 <label>
-	//                     Pick your favorite La Croix flavor:
-	//                     <select value={this.state.value} onChange={this.handleChange}>
-	//                         <option value="aaa">aaa</option>
-	//                         <option value="bbb">bbb</option>
-	//                         <option value="ccc">ccc</option>
-	//                         <option value="ddd">ddd</option>
-	//                     </select>
-	//                 </label>
-	//                 <input type="submit" value="Submit" />
-	//             </form>
-	//         );
-	//     }
-	// }
-	// ReactDOM.render(
-	//     <FlavorForm />,
-	//     document.getElementById('root')
-	// );
-	
-	
-	// import AwesomeComponent from './AwesomeComponent.jsx';
-	// class App extends React.Component {
-	//     render () {
-	//         return (
-	//           <div>
-	//             <p> Hello React!</p>
-	//             <AwesomeComponent />
-	//           </div>
-	//         );
-	//     }
-	// }
-	// ReactDOM.render(
-	//     <App />,
-	//     document.getElementById('root')
-	// );
-	
-	function BoilingVerdict(props) {
-	    if (props.celsius >= 100) {
-	        return _react2.default.createElement(
-	            'p',
-	            null,
-	            'The water would boil.'
-	        );
-	    }
-	
-	    return _react2.default.createElement(
-	        'p',
-	        null,
-	        'The water would not boil.'
-	    );
-	}
-	var scaleNames = {
-	    ce: 'Celsius',
-	    fa: 'Fahrenheit'
-	};
-	
-	var TemperatureInput = function (_React$Component) {
-	    _inherits(TemperatureInput, _React$Component);
-	
-	    function TemperatureInput(props) {
-	        _classCallCheck(this, TemperatureInput);
-	
-	        var _this = _possibleConstructorReturn(this, (TemperatureInput.__proto__ || Object.getPrototypeOf(TemperatureInput)).call(this, props));
-	
-	        _this.handleChange = _this.handleChange.bind(_this);
-	        return _this;
-	    }
-	
-	    _createClass(TemperatureInput, [{
-	        key: 'handleChange',
-	        value: function handleChange(e) {
-	            this.props.onChange(e.target.value);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var value = this.props.value;
-	            var scale = this.props.scale;
-	
-	            return _react2.default.createElement(
-	                'fieldset',
-	                null,
-	                _react2.default.createElement(
-	                    'legend',
-	                    null,
-	                    'Enter temperature in ',
-	                    scaleNames[scale],
-	                    ':'
-	                ),
-	                _react2.default.createElement('input', { value: value, onChange: this.handleChange })
-	            );
-	        }
-	    }]);
-	
-	    return TemperatureInput;
-	}(_react2.default.Component);
-	
-	function BoilingVerdict(props) {
-	    if (props.celsius >= 100) {
-	        return _react2.default.createElement(
-	            'p',
-	            null,
-	            'The water would boil.'
-	        );
-	    }
-	
-	    return _react2.default.createElement(
-	        'p',
-	        null,
-	        'The water would not boil.'
-	    );
-	}
-	function tryConvert(value, convert) {
-	    var input = parseFloat(value);
-	    if (Number.isNaN(input)) {
-	        return '';
-	    }
-	    var output = convert(input);
-	    var rounded = Math.round(output * 1000) / 1000;
-	
-	    return rounded.toString();
-	}
-	function toCelsius(fahrenheit) {
-	    return (fahrenheit - 32) * 5 / 9;
-	}
-	
-	function toFahrenheit(celsius) {
-	    return celsius * 9 / 5 + 32;
-	}
-	
-	var Calculator = function (_React$Component2) {
-	    _inherits(Calculator, _React$Component2);
-	
-	    function Calculator(props) {
-	        _classCallCheck(this, Calculator);
-	
-	        var _this2 = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
-	
-	        _this2.state = {
-	            value: '',
-	            scale: 'ce'
-	        };
-	
-	        _this2.handleCelsiusChange = _this2.handleCelsiusChange.bind(_this2);
-	        _this2.handleFahrenheitChange = _this2.handleFahrenheitChange.bind(_this2);
-	        return _this2;
-	    }
-	
-	    _createClass(Calculator, [{
-	        key: 'handleCelsiusChange',
-	        value: function handleCelsiusChange(value) {
-	            this.setState({
-	                scale: 'ce',
-	                value: value
-	            });
-	        }
-	    }, {
-	        key: 'handleFahrenheitChange',
-	        value: function handleFahrenheitChange(value) {
-	            this.setState({
-	                scale: 'fa',
-	                value: value
-	            });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var scale = this.state.scale;
-	            var value = this.state.value;
-	            var celsius = scale === 'fa' ? tryConvert(value, toCelsius) : value;
-	            var fahrenheit = scale === 'ce' ? tryConvert(value, toFahrenheit) : value;
-	
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(TemperatureInput, {
-	                    scale: 'ce',
-	                    value: celsius,
-	                    onChange: this.handleCelsiusChange }),
-	                _react2.default.createElement(TemperatureInput, {
-	                    scale: 'fa',
-	                    value: fahrenheit,
-	                    onChange: this.handleFahrenheitChange }),
-	                _react2.default.createElement(BoilingVerdict, {
-	                    celsius: parseFloat(celsius) })
-	            );
-	        }
-	    }]);
-	
-	    return Calculator;
-	}(_react2.default.Component);
-	
-	_reactDom2.default.render(_react2.default.createElement(Calculator, null), document.getElementById('root'));
+	// import SearchComponent from './component/SearchComponent.jsx';
+	// import FilterComponent from './component/FilterComponent.jsx';
+	
+	_reactDom2.default.render(_react2.default.createElement(_ShoppingCartComponent2.default, null), document.getElementById('root'));
+	
+	// import AwesomeComponent from './component/AwesomeComponent.jsx';
+	// import CalculatorComponent from './component/CalculatorComponent.jsx';
+	// import NavMenuComponent from './component/NavMenuComponent.jsx';
+	// import EditComponent from './component/EditComponent.jsx';
 
 /***/ },
 /* 2 */
@@ -9578,7 +9114,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../~/css-loader!./../../~/postcss-loader!./../../~/sass-loader!./style.scss */ 300);
+	var content = __webpack_require__(/*! !./../../~/css-loader?sourceMap!./../../~/postcss-loader!./../../~/sass-loader!./style.scss */ 300);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 302)(content, {});
@@ -9587,8 +9123,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./style.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./style.scss");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./style.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./style.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -9599,9 +9135,9 @@
 
 /***/ },
 /* 300 */
-/*!********************************************************************************!*\
-  !*** ./~/css-loader!./~/postcss-loader!./~/sass-loader!./dev/style/style.scss ***!
-  \********************************************************************************/
+/*!******************************************************************************************!*\
+  !*** ./~/css-loader?sourceMap!./~/postcss-loader!./~/sass-loader!./dev/style/style.scss ***!
+  \******************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 301)();
@@ -9609,7 +9145,7 @@
 	
 	
 	// module
-	exports.push([module.id, "#root {\n  box-shadow: 2px 2px 10px; }\n", ""]);
+	exports.push([module.id, "* {\n  margin: 0;\n  padding: 0; }\n", "", {"version":3,"sources":["/./dev/style/style.scss"],"names":[],"mappings":"AAAA;EACE,UAAU;EACV,WAAW,EAAE","file":"style.scss","sourcesContent":["* {\n  margin: 0;\n  padding: 0; }\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -31676,6 +31212,274 @@
 	
 	module.exports = ReactDOMInvalidARIAHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 295)))
+
+/***/ },
+/* 479 */
+/*!********************************************************!*\
+  !*** ./dev/script/component/ShoppingCartComponent.jsx ***!
+  \********************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 303);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(/*! classnames */ 480);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	__webpack_require__(/*! ../../style/_ShoppingCartComponent.scss */ 481);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var items = [{
+	    name: 'Web Development',
+	    price: '$300.00',
+	    toggle: true
+	}, {
+	    name: 'Design',
+	    price: '$400.00',
+	    toggle: false
+	}, {
+	    name: 'Integration',
+	    price: '$250.00',
+	    toggle: false
+	}, {
+	    name: 'Training',
+	    price: '$220.00',
+	    toggle: false
+	}];
+	
+	var ShoppingCartComponent = function (_React$Component) {
+	    _inherits(ShoppingCartComponent, _React$Component);
+	
+	    function ShoppingCartComponent(props) {
+	        _classCallCheck(this, ShoppingCartComponent);
+	
+	        var _this = _possibleConstructorReturn(this, (ShoppingCartComponent.__proto__ || Object.getPrototypeOf(ShoppingCartComponent)).call(this, props));
+	
+	        _this.state = {
+	            selectItems: items.map(function (item) {
+	                return item.toggle;
+	            })
+	        };
+	        return _this;
+	    }
+	
+	    _createClass(ShoppingCartComponent, [{
+	        key: 'commodityToggle',
+	        value: function commodityToggle(i, selected) {
+	            var selectItems = this.state.selectItems;
+	
+	            selectItems[i] = !selected;
+	            this.setState({
+	                selectItems: selectItems
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+	
+	            var sum = 0;
+	
+	            this.state.selectItems.forEach(function (item, i) {
+	                if (item) {
+	                    sum += parseFloat(items[i].price.slice(1, -1));
+	                }
+	            });
+	
+	            return _react2.default.createElement(
+	                'section',
+	                null,
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Services'
+	                ),
+	                _react2.default.createElement(
+	                    'ul',
+	                    null,
+	                    items.map(function (item, i) {
+	                        return _react2.default.createElement(Commodity, {
+	                            key: i,
+	                            dataId: i,
+	                            name: item.name,
+	                            price: item.price,
+	                            selected: _this2.state.selectItems[i],
+	                            onToggle: _this2.commodityToggle.bind(_this2, i, _this2.state.selectItems[i]) });
+	                    })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'total' },
+	                    'Total: ',
+	                    _react2.default.createElement(
+	                        'span',
+	                        null,
+	                        '$' + sum + '.00'
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return ShoppingCartComponent;
+	}(_react2.default.Component);
+	
+	var Commodity = function (_React$Component2) {
+	    _inherits(Commodity, _React$Component2);
+	
+	    function Commodity() {
+	        _classCallCheck(this, Commodity);
+	
+	        return _possibleConstructorReturn(this, (Commodity.__proto__ || Object.getPrototypeOf(Commodity)).apply(this, arguments));
+	    }
+	
+	    _createClass(Commodity, [{
+	        key: 'handleClick',
+	        value: function handleClick() {
+	            this.props.onToggle(this.props.dataId, !this.props.selected);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'li',
+	                {
+	                    className: (0, _classnames2.default)({ active: this.props.selected }),
+	                    onClick: this.handleClick.bind(this) },
+	                this.props.name,
+	                _react2.default.createElement(
+	                    'span',
+	                    null,
+	                    this.props.price
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Commodity;
+	}(_react2.default.Component);
+	
+	exports.default = ShoppingCartComponent;
+
+/***/ },
+/* 480 */
+/*!*******************************!*\
+  !*** ./~/classnames/index.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+	
+	(function () {
+		'use strict';
+	
+		var hasOwn = {}.hasOwnProperty;
+	
+		function classNames () {
+			var classes = [];
+	
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+	
+				var argType = typeof arg;
+	
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+	
+			return classes.join(' ');
+		}
+	
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
+
+/***/ },
+/* 481 */
+/*!***********************************************!*\
+  !*** ./dev/style/_ShoppingCartComponent.scss ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../~/css-loader?sourceMap!./../../~/postcss-loader!./../../~/sass-loader!./_ShoppingCartComponent.scss */ 482);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 302)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./_ShoppingCartComponent.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/postcss-loader/index.js!./../../node_modules/sass-loader/index.js!./_ShoppingCartComponent.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 482 */
+/*!***********************************************************************************************************!*\
+  !*** ./~/css-loader?sourceMap!./~/postcss-loader!./~/sass-loader!./dev/style/_ShoppingCartComponent.scss ***!
+  \***********************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 301)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "section {\n  font: 15px/1.3 'Open Sans', sans-serif;\n  color: #5e5b64;\n  text-align: center;\n  background-color: #61a1bc;\n  border-radius: 2px;\n  box-shadow: 0 1px 1px #ccc;\n  width: 400px;\n  padding: 35px 60px;\n  margin: 50px auto; }\n\nh1 {\n  color: #fff;\n  font-size: 64px;\n  font-family: 'Cookie', cursive;\n  font-weight: normal;\n  line-height: 1;\n  text-shadow: 0 3px 0 rgba(0, 0, 0, .1); }\n\nul {\n  list-style: none;\n  color: #fff;\n  font-size: 20px;\n  font-weight: bold;\n  text-align: left;\n  margin: 20px 0 15px; }\n  ul li {\n    padding: 20px 30px;\n    background-color: #e35885;\n    margin-bottom: 8px;\n    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);\n    cursor: pointer; }\n    ul li.active {\n      background-color: #8ec16d; }\n    ul li span {\n      float: right; }\n\n.total {\n  border-top: 1px solid rgba(255, 255, 255, .5);\n  padding: 15px 30px;\n  font-size: 20px;\n  font-weight: bold;\n  text-align: left;\n  color: #fff; }\n  .total span {\n    float: right; }\n", "", {"version":3,"sources":["/./dev/style/_ShoppingCartComponent.scss"],"names":[],"mappings":"AAAA;EACE,uCAAuC;EACvC,eAAe;EACf,mBAAmB;EACnB,0BAA0B;EAC1B,mBAAmB;EACnB,2BAA2B;EAC3B,aAAa;EACb,mBAAmB;EACnB,kBAAkB,EAAE;;AAEtB;EACE,YAAY;EACZ,gBAAgB;EAChB,+BAA+B;EAC/B,oBAAoB;EACpB,eAAe;EACf,uCAAwC,EAAE;;AAE5C;EACE,iBAAiB;EACjB,YAAY;EACZ,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,oBAAoB,EAAE;EACtB;IACE,mBAAmB;IACnB,0BAA0B;IAC1B,mBAAmB;IACnB,wCAAyC;IACzC,gBAAgB,EAAE;IAClB;MACE,0BAA0B,EAAE;IAC9B;MACE,aAAa,EAAE;;AAErB;EACE,8CAA+C;EAC/C,mBAAmB;EACnB,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,YAAY,EAAE;EACd;IACE,aAAa,EAAE","file":"_ShoppingCartComponent.scss","sourcesContent":["section {\n  font: 15px/1.3 'Open Sans', sans-serif;\n  color: #5e5b64;\n  text-align: center;\n  background-color: #61a1bc;\n  border-radius: 2px;\n  box-shadow: 0 1px 1px #ccc;\n  width: 400px;\n  padding: 35px 60px;\n  margin: 50px auto; }\n\nh1 {\n  color: #fff;\n  font-size: 64px;\n  font-family: 'Cookie', cursive;\n  font-weight: normal;\n  line-height: 1;\n  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.1); }\n\nul {\n  list-style: none;\n  color: #fff;\n  font-size: 20px;\n  font-weight: bold;\n  text-align: left;\n  margin: 20px 0 15px; }\n  ul li {\n    padding: 20px 30px;\n    background-color: #e35885;\n    margin-bottom: 8px;\n    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);\n    cursor: pointer; }\n    ul li.active {\n      background-color: #8ec16d; }\n    ul li span {\n      float: right; }\n\n.total {\n  border-top: 1px solid rgba(255, 255, 255, 0.5);\n  padding: 15px 30px;\n  font-size: 20px;\n  font-weight: bold;\n  text-align: left;\n  color: #fff; }\n  .total span {\n    float: right; }\n"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
 
 /***/ }
 /******/ ]);

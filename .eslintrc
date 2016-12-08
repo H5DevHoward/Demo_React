@@ -124,7 +124,9 @@
 
 
         // 空白
-        "indent": ["error", 4], // 缩进控制4空格
+        "indent": ["error", 4, {
+            "SwitchCase": 1,
+        }], // 缩进控制4空格
         "no-mixed-spaces-and-tabs": "error", // 禁止使用 空格 和 tab 混合缩进
         "space-before-blocks": ["error", "always"], // 语句块之前的需要有空格
         "keyword-spacing": "error", // 关键字后面必须要有空格
@@ -139,7 +141,7 @@
         "object-curly-spacing": ["error", "never"], // 对象紧贴花括号部分不允许包含空格
         "max-len": ["error", 100], // 每行字符不能超过100个
         "no-regex-spaces": "error", // 禁止正则表达式字面量中出现多个空格
-        "no-multi-spaces": "error", // 禁止出现多个空格而且不是用来作缩进的 
+        "no-multi-spaces": "error", // 禁止出现多个空格而且不是用来作缩进的
         "block-spacing": ["error", "never"], // 单行代码块中紧贴括号部分不允许包含空格
         "computed-property-spacing": ["error", "never"], // 禁止括号和其内部值之间的空格
         "no-trailing-spaces": ["error", {
@@ -179,7 +181,7 @@
 
         // 命名
         "id-length": ["error", {
-            "exceptions": ["e", "i"]
+            "exceptions": ["e", "i", "_"]
         }], // 命名长度不能太短
         // "camelcase": "error", // 强制使用驼峰命名法
         "new-cap": "error", // 类或构造函数的首字母大写

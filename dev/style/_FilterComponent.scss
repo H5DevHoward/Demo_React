@@ -1,0 +1,15 @@
+nav {
+    width: 600px;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+
+    span {
+        display: inline-block;
+        width: 12%;
+        height: 100%;
+        cursor: pointer;
+        background-color: #8281ac;
+        border: 1px solid #fff;
+    }
+}
