@@ -17,9 +17,14 @@ class EditComponent extends React.Component {
         }));
     }
 
-    handleBlur() {
-        this.setState({
-            toggle: false,
+    componentDidMount() {
+        document.addEventListener('click', e => {
+            if (e.target !== document.getElementsByClassName('edit')[0]
+                && e.target !== document.getElementsByClassName('label')[0]) {
+                this.setState({
+                    toggle: false,
+                });
+            }
         });
     }
 
@@ -41,12 +46,12 @@ class EditComponent extends React.Component {
                 <div className={divClassName}>
                     <input
                         value={value}
-                        onBlur={this.handleBlur.bind(this)}
+                        className="edit"
                         onChange={this.handleChange.bind(this)}>
                     </input>
                 </div>
                 <p>
-                    <span onClick={this.handleClick.bind(this)}>
+                    <span className="label" onClick={this.handleClick.bind(this)}>
                         {value}
                     </span>
                 </p>

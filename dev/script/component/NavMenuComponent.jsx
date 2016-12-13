@@ -44,17 +44,16 @@ import classNames from 'classnames';
 //     }
 // }
 
-
-const items = [
-    ['Home', 'item0'],
-    ['Projects', 'item1'],
-    ['Services', 'item2'],
-    ['Contact', 'item3'],
-];
 class NavMenuComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            initialData: [
+                ['Home', 'item0'],
+                ['Projects', 'item1'],
+                ['Services', 'item2'],
+                ['Contact', 'item3'],
+            ],
             activeIndex: 0,
         };
     }
@@ -67,7 +66,7 @@ class NavMenuComponent extends React.Component {
 
     render() {
         const activeIndex = this.state.activeIndex;
-        const listItems = items.map((item, i) =>
+        const listItems = this.state.initialData.map((item, i) =>
             <a
                 href="#"
                 key={i.toString()}
@@ -81,7 +80,7 @@ class NavMenuComponent extends React.Component {
                 <nav>
                     {listItems}
                 </nav>
-                <p>You chose <b>{items[this.state.activeIndex][0]}</b></p>
+                <p>You chose <b>{this.state.initialData[this.state.activeIndex][0]}</b></p>
             </section>
         );
     }

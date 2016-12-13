@@ -1,79 +1,19 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
 
-
 class FilterWrapperComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
             navItems: props.dataNav,
-            showItems: [
-                ...props.dataImg[0],
-                ...props.dataImg[1],
-                ...props.dataImg[2],
-            ],
+            showItems: props.dataImg[0],
         };
     }
 
-    handleClick(i, showItems) {
-        switch (i) {
-            case 0:
-                this.setState({
-                    showItems: [
-                        ...showItems[0],
-                        ...showItems[1],
-                        ...showItems[2],
-                    ],
-                });
-                break;
-            case 1:
-                this.setState({
-                    showItems: [
-                        ...showItems[0],
-                    ],
-                });
-                break;
-            case 2:
-                this.setState({
-                    showItems: [
-                        ...showItems[1],
-                    ],
-                });
-                break;
-            case 3:
-                this.setState({
-                    showItems: [
-                        ...showItems[2],
-                    ],
-                });
-                break;
-            case 4:
-                this.setState({
-                    showItems: [
-                        ...showItems[0],
-                        ...showItems[1],
-                    ],
-                });
-                break;
-            case 5:
-                this.setState({
-                    showItems: [
-                        ...showItems[1],
-                        ...showItems[2],
-                    ],
-                });
-                break;
-            case 6:
-                this.setState({
-                    showItems: [
-                        ...showItems[0],
-                        ...showItems[2],
-                    ],
-                });
-                break;
-            default:
-                console.log('default');
-        }
+    handleClick(i, imgs) {
+        this.setState({
+            showItems: imgs[i],
+        });
     }
 
 

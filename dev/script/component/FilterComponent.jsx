@@ -8,7 +8,7 @@ class FilterComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            imgItems: [
+            initialData: [
                 [
                     'image/red01.jpg',
                     'image/red02.jpg',
@@ -48,11 +48,35 @@ class FilterComponent extends Component {
     }
 
     render() {
+        const imgItems = this.state.initialData;
+        const dataImg = [
+            [
+                ...imgItems[0],
+                ...imgItems[1],
+                ...imgItems[2],
+            ], [
+                ...imgItems[0],
+            ], [
+                ...imgItems[1],
+            ], [
+                ...imgItems[2],
+            ], [
+                ...imgItems[0],
+                ...imgItems[1],
+            ], [
+                ...imgItems[1],
+                ...imgItems[2],
+            ], [
+                ...imgItems[0],
+                ...imgItems[2],
+            ],
+        ];
+
         return (
             <section>
                 <FilterWrapperComponent
                     dataNav={this.state.navItems}
-                    dataImg={this.state.imgItems}
+                    dataImg={dataImg}
                 />
             </section>
         );

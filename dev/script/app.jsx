@@ -10,9 +10,16 @@ import ReactDOM from 'react-dom';
 // import EditComponent from './component/EditComponent.jsx';
 // import ShoppingCartComponent from './component/ShoppingCartComponent.jsx';
 // import SearchComponent from './component/SearchComponent.jsx';
-import FilterComponent from './component/FilterComponent.jsx';
+// import FilterComponent from './component/FilterComponent.jsx';
+
+
+
+import R29HolidayGiftCuratorComponent from './example01/R29HolidayGiftCuratorComponent.jsx';
+
+
+
 
 ReactDOM.render(
-    <FilterComponent />,
+    <R29HolidayGiftCuratorComponent />,
     document.getElementById('root')
 );

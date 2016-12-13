@@ -6,7 +6,7 @@ class SearchComponent extends React.Component {
         super(props);
         this.state = {
             value: '',
-            items: [
+            initialData: [
                 {
                     thumb: 'image/thumb01.jpg',
                     copy: 'What You Need To Know About CSS Variables',
@@ -43,7 +43,7 @@ class SearchComponent extends React.Component {
 
     render() {
         const value = this.state.value;
-        const listItems = this.state.items.map((item, i) => {
+        const listItems = this.state.initialData.map((item, i) => {
             if (item.copy.toUpperCase().includes(value.toUpperCase())) {
                 return (
                     <li key={i}>
