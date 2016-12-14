@@ -9,6 +9,7 @@ const DEV_DIR = path.resolve(__dirname, 'dev/script/');
 
 const config = {
     entry: [
+        'whatwg-fetch',
         `${DEV_DIR}/app.jsx`,
     ],
     output: {

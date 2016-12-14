@@ -14,7 +14,7 @@ section {
     }
 
     .btn-start {
-        display: inline-block;
+        display: none;
         font-size: 30px;
         cursor: pointer;
         vertical-align: middle;
@@ -24,11 +24,12 @@ section {
         box-shadow: 0 0 10px;
 
         &.active {
-            display: none;
+            display: inline-block;
         }
     }
 
     .person-wrapper,
+    .showCase-wrapper,
     .trait-wrapper {
         display: none;
     }
@@ -62,10 +63,12 @@ section {
         padding: 5px;
         box-shadow: 0 0 10px;
         opacity: 0.5;
+        pointer-events: none;
 
         &.active {
             cursor: pointer;
             opacity: 1;
+            pointer-events: all;
         }
     }
 }
@@ -93,5 +96,60 @@ section {
     li {
         list-style: none;
         font-size: 20px;
+    }
+
+    .btn-see {
+        display: inline-block;
+        font-size: 30px;
+        border: 1px solid #000;
+        border-radius: 10px;
+        padding: 5px;
+        box-shadow: 0 0 10px;
+        opacity: 0.5;
+        margin-top: 20px;
+        pointer-events: none;
+
+        &.active {
+            cursor: pointer;
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+}
+
+.showCase-wrapper {
+    &.active {
+        display: block;
+    }
+
+    .showCase-item {
+        display: inline-block;
+        width: 200px;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .showCase-btn {
+        position: relative;
+        margin-top: 50px;
+    }
+
+    .show-person,
+    .show-traits {
+        width: 200px;
+        font-size: 20px;
+        position: absolute;
+        border: 1px solid #268c8f;
+    }
+
+    .show-person {
+        left: 0;
+    }
+
+    .show-traits {
+        right: 0;
     }
 }

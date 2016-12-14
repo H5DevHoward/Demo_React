@@ -16,8 +16,23 @@ class PersonComponent extends Component {
     }
 
     handleNextClick(item) {
+        const feed = this.props.feed;
+        const personItem = this.props.personItem;
+        const traitItems = this.props.traitItems;
+        const showCases = [];
+
         if (item !== '' && item) {
-            this.props.onToggle(item.toUpperCase(), true);
+            if (this.props.reset) {
+                feed.forEach((item, i) => {
+                    if (item.gsx$person.$t === personItem
+                        && traitItems.includes(item.gsx$trait.$t.toLowerCase())) {
+                        showCases.push(item);
+                    }
+                });
+                this.props.onToggle(item.toUpperCase(), showCases, false, false, true);
+            } else {
+                this.props.onToggle(item.toUpperCase(), this.props.feed, false, true, false);
+            }
         }
     }
 
@@ -26,7 +41,7 @@ class PersonComponent extends Component {
         const activeIndex = this.state.activeIndex;
         const wrapperClass = classNames({
             'person-wrapper': true,
-            active: this.props.start && !this.props.showNext,
+            active: this.props.show,
         });
         const btnClass = classNames({
             'btn-next': true,

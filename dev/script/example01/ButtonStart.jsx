@@ -3,13 +3,13 @@ import classNames from 'classnames';
 
 class ButtonStart extends Component {
     handleClick() {
-        this.props.onToggle(true);
+        this.props.onToggle(false, true);
     }
 
     render() {
         const wrapperClass = classNames({
             'btn-start': true,
-            active: this.props.start,
+            active: this.props.show,
         });
 
         return (
