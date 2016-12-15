@@ -9,6 +9,9 @@ class ShowCasesComponent extends Component {
             showFrame2: props.showFrame2,
             showFrame3: props.showFrame3,
         };
+
+        this.handleClickPerson = this.handleClickPerson.bind(this);
+        this.handleClickTraits = this.handleClickTraits.bind(this);
     }
 
     handleClickPerson() {
@@ -39,10 +42,10 @@ class ShowCasesComponent extends Component {
                 <div className="showCase-btn">
                     <div
                         className="show-person"
-                        onClick={this.handleClickPerson.bind(this)}>PERSON</div>
+                        onClick={this.handleClickPerson}>PERSON</div>
                     <div
                         className="show-traits"
-                        onClick={this.handleClickTraits.bind(this)}>TRAITS</div>
+                        onClick={this.handleClickTraits}>TRAITS</div>
                 </div>
             </div>
         );

@@ -7,6 +7,9 @@ class PersonComponent extends Component {
         this.state = {
             activeIndex: '',
         };
+
+        this.handleClick = this.handleClick.bind(this);
+        this.handleNextClick = this.handleNextClick.bind(this);
     }
 
     handleClick(i) {
@@ -19,13 +22,16 @@ class PersonComponent extends Component {
         const feed = this.props.feed;
         const personItem = this.props.personItem;
         const traitItems = this.props.traitItems;
+        const reset = this.props.reset;
         const showCases = [];
 
         if (item !== '' && item) {
-            if (this.props.reset) {
+            if (reset) {
                 feed.forEach((item, i) => {
-                    if (item.gsx$person.$t === personItem
-                        && traitItems.includes(item.gsx$trait.$t.toLowerCase())) {
+                    const fetchPerson = item.gsx$person.$t;
+                    const fetchTraitLower = item.gsx$trait.$t.toLowerCase();
+                    if (fetchPerson === personItem
+                        && traitItems.includes(fetchTraitLower)) {
                         showCases.push(item);
                     }
                 });
@@ -51,7 +57,7 @@ class PersonComponent extends Component {
             <div
                 key={item}
                 className={classNames('person-item', [{active: activeIndex === i}])}
-                onClick={this.handleClick.bind(this, i)}>
+                onClick={() => this.handleClick(i)}>
                 {item.toUpperCase()}
             </div>
         );
@@ -61,7 +67,7 @@ class PersonComponent extends Component {
                 <div className="grid-wrapper">{listItems}</div>
                 <div
                     className={btnClass}
-                    onClick={this.handleNextClick.bind(this, data[activeIndex])}
+                    onClick={() => this.handleNextClick(data[activeIndex])}
                     >NEXT
                 </div>
             </div>

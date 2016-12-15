@@ -7,8 +7,6 @@ import PersonComponent from './PersonComponent.jsx';
 import TraitComponent from './TraitComponent.jsx';
 import ShowCasesComponent from './ShowCasesComponent.jsx';
 
-import '../../style/_R29HolidayGiftCuratorComponent.scss';
-
 class R29HolidayGiftCuratorComponent extends Component {
     constructor(props) {
         super(props);
@@ -58,6 +56,11 @@ class R29HolidayGiftCuratorComponent extends Component {
             traitItems: [],
             caseItems: [],
         };
+
+        this.handleToggle = this.handleToggle.bind(this);
+        this.handleTogglePerson = this.handleTogglePerson.bind(this);
+        this.handleToggleTrait = this.handleToggleTrait.bind(this);
+        this.handleToggleCase = this.handleToggleCase.bind(this);
     }
 
     componentDidMount() {
@@ -123,7 +126,8 @@ class R29HolidayGiftCuratorComponent extends Component {
             <section>
                 <ButtonStart
                     show={this.state.showFrame1}
-                    onToggle={this.handleToggle.bind(this)}/>
+                    onToggle={this.handleToggle}
+                />
                 <PersonComponent
                     data={this.state.person}
                     feed={this.state.feed}
@@ -131,7 +135,8 @@ class R29HolidayGiftCuratorComponent extends Component {
                     reset={this.state.resetPerson}
                     personItem={this.state.personItem}
                     traitItems={this.state.traitItems}
-                    onToggle={this.handleTogglePerson.bind(this)}/>
+                    onToggle={this.handleTogglePerson}
+                />
                 <TraitComponent
                     data={this.state.trait}
                     feed={this.state.feed}
@@ -139,7 +144,8 @@ class R29HolidayGiftCuratorComponent extends Component {
                     reset={this.state.resetTraits}
                     personItem={this.state.personItem}
                     traitItems={this.state.traitItems}
-                    onToggle={this.handleToggleTrait.bind(this)}/>
+                    onToggle={this.handleToggleTrait}
+                />
                 <ShowCasesComponent
                     data={this.state.caseItems}
                     showFrame2={this.state.showFrame2}
@@ -147,7 +153,8 @@ class R29HolidayGiftCuratorComponent extends Component {
                     show={this.state.showFrame4}
                     personItem={this.state.personItem}
                     traitItems={this.state.traitItems}
-                    onToggle={this.handleToggleCase.bind(this)}/>
+                    onToggle={this.handleToggleCase}
+                />
             </section>
         );
     }

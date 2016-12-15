@@ -12,6 +12,9 @@ class TraitComponent extends Component {
             traitItems: props.traitItems,
             seeBtnEnable: false,
         };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleChange(i) {
@@ -67,14 +70,16 @@ class TraitComponent extends Component {
             active: this.state.seeBtnEnable,
         });
         const data = this.props.data;
-        const unselected = 3 - this.state.selected.filter(item => item === true).length;
+        const selected = this.state.selected.filter(item => item === true);
+        const unselectedLength = 3 - selected.length;
         const listItems = data.map((item, i) =>
             <li key={item.name}>
                 <label>
                     <input
                         type="checkbox"
                         checked={this.state.selected[i]}
-                        onChange={this.handleChange.bind(this, i)} />
+                        onChange={() => this.handleChange(i)}
+                    />
                     {item.name.toUpperCase()}
                 </label>
             </li>
@@ -83,9 +88,9 @@ class TraitComponent extends Component {
         return (
             <div className={wrapperClass}>
                 <p>What is your {this.props.personItem} like?</p>
-                <p>Choose {unselected} trait{unselected === 1 ? '' : 's'}</p>
+                <p>Choose {unselectedLength} trait{unselectedLength === 1 ? '' : 's'}</p>
                 <ul className="trait-list">{listItems}</ul>
-                <div className={btnClass} onClick={this.handleClick.bind(this)}>
+                <div className={btnClass} onClick={this.handleClick}>
                     see gifts
                 </div>
             </div>

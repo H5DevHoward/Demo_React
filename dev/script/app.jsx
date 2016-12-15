@@ -13,10 +13,7 @@ import ReactDOM from 'react-dom';
 // import FilterComponent from './component/FilterComponent.jsx';
 
 
-
-import R29HolidayGiftCuratorComponent from './example01/R29HolidayGiftCuratorComponent.jsx';
-
-
+import R29HolidayGiftCuratorComponent from './example01';
 
 
 ReactDOM.render(

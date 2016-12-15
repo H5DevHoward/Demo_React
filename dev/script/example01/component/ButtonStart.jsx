@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import classNames from 'classnames';
 
 class ButtonStart extends Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
     handleClick() {
         this.props.onToggle(false, true);
     }
@@ -13,7 +18,7 @@ class ButtonStart extends Component {
         });
 
         return (
-            <div className={wrapperClass} onClick={this.handleClick.bind(this)}>
+            <div className={wrapperClass} onClick={this.handleClick}>
                 click to start
             </div>
         );
