@@ -11,11 +11,16 @@ class ShowCasesComponent extends Component {
         };
 
         this.handleClickPerson = this.handleClickPerson.bind(this);
+        this.handleClickReplay = this.handleClickReplay.bind(this);
         this.handleClickTraits = this.handleClickTraits.bind(this);
     }
 
     handleClickPerson() {
         this.props.onToggle(false, true, false, [true, false]);
+    }
+
+    handleClickReplay() {
+        this.props.replay();
     }
 
     handleClickTraits() {
@@ -43,6 +48,9 @@ class ShowCasesComponent extends Component {
                     <div
                         className="show-person"
                         onClick={this.handleClickPerson}>PERSON</div>
+                    <div
+                        className="replay"
+                        onClick={this.handleClickReplay}>PLAY AGAIN</div>
                     <div
                         className="show-traits"
                         onClick={this.handleClickTraits}>TRAITS</div>

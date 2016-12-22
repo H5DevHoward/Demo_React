@@ -12,12 +12,30 @@ class R29HolidayGiftCuratorComponent extends Component {
         super(props);
         this.state = {
             person: [
-                'mom',
-                'dad',
-                's.o.',
-                'bff',
-                'work spouse',
-                'surprise me',
+                {
+                    name: 'mom',
+                    selected: false,
+                },
+                {
+                    name: 'dad',
+                    selected: false,
+                },
+                {
+                    name: 's.o.',
+                    selected: false,
+                },
+                {
+                    name: 'bff',
+                    selected: false,
+                },
+                {
+                    name: 'work spouse',
+                    selected: false,
+                },
+                {
+                    name: 'surprise me',
+                    selected: false,
+                },
             ],
             trait: [
                 {
@@ -61,6 +79,7 @@ class R29HolidayGiftCuratorComponent extends Component {
         this.handleTogglePerson = this.handleTogglePerson.bind(this);
         this.handleToggleTrait = this.handleToggleTrait.bind(this);
         this.handleToggleCase = this.handleToggleCase.bind(this);
+        this.handleReplay = this.handleReplay.bind(this);
     }
 
     componentDidMount() {
@@ -86,17 +105,38 @@ class R29HolidayGiftCuratorComponent extends Component {
         });
     }
 
-    handleTogglePerson(personSelected, cases, current, next, after) {
+    handleTogglePerson(selectedIndex, personSelected, cases, resetPerson, traits) {
+        const newPerson = this.state.person;
+        newPerson.forEach((item, i) => {
+            if (i === selectedIndex) {
+                item.selected = true;
+            } else {
+                item.selected = false;
+            }
+        });
+
+        const newTrait = this.state.trait;
+        for (let i = 0; i < newTrait.length; ++i) {
+            newTrait[i].selected = false;
+            for (let jj = 0; jj < traits.length; ++jj) {
+                if (traits[jj] === newTrait[i].name.toLowerCase()) {
+                    newTrait[i].selected = true;
+                }
+            }
+        }
+
         this.setState({
             personItem: personSelected,
+            trait: newTrait,
+            traitItems: traits,
             caseItems: cases,
-            showFrame2: current,
-            showFrame3: next,
-            showFrame4: after,
+            showFrame2: false,
+            showFrame3: !resetPerson,
+            showFrame4: resetPerson,
         });
     }
 
-    handleToggleTrait(selectedItems, traitsSelected, cases, current, next) {
+    handleToggleTrait(selectedItems, traitsSelected, cases) {
         const newTrait = this.state.trait;
         newTrait.forEach((item, i) => {
             item.selected = selectedItems[i];
@@ -105,8 +145,8 @@ class R29HolidayGiftCuratorComponent extends Component {
         this.setState({
             traitItems: traitsSelected,
             caseItems: cases,
-            showFrame3: current,
-            showFrame4: next,
+            showFrame3: false,
+            showFrame4: true,
             trait: newTrait,
         });
     }
@@ -121,6 +161,30 @@ class R29HolidayGiftCuratorComponent extends Component {
         });
     }
 
+    handleReplay() {
+        const newTrait = this.state.trait;
+        newTrait.forEach((item, i) => {
+            item.selected = false;
+        });
+
+        const newPerson = this.state.person;
+        newPerson.forEach((item, i) => {
+            item.selected = false;
+        });
+
+        this.setState({
+            showFrame2: true,
+            showFrame4: false,
+            personItem: '',
+            traitItems: [],
+            caseItems: [],
+            resetPerson: false,
+            resetTraits: false,
+            trait: newTrait,
+            person: newPerson,
+        });
+    }
+
     render() {
         return (
             <section>
@@ -130,6 +194,7 @@ class R29HolidayGiftCuratorComponent extends Component {
                 />
                 <PersonComponent
                     data={this.state.person}
+                    dataTrait={this.state.trait}
                     feed={this.state.feed}
                     show={this.state.showFrame2}
                     reset={this.state.resetPerson}
@@ -154,6 +219,7 @@ class R29HolidayGiftCuratorComponent extends Component {
                     personItem={this.state.personItem}
                     traitItems={this.state.traitItems}
                     onToggle={this.handleToggleCase}
+                    replay={this.handleReplay}
                 />
             </section>
         );

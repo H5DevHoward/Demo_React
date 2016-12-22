@@ -6,15 +6,21 @@ class TraitComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selected: [...props.data].map(item =>
+            selected: props.data.map(item =>
                 item.selected
             ),
             traitItems: props.traitItems,
-            seeBtnEnable: false,
         };
 
-        this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+    }
+
+    componentWillReceiveProps() {
+        this.setState({
+            selected: this.props.data.map(item =>
+                item.selected
+            ),
+        });
     }
 
     handleChange(i) {
@@ -22,15 +28,6 @@ class TraitComponent extends Component {
         const traitItems = [];
         if (!selected[i] && selected.filter(item => item === true).length > 2) return;
         selected[i] = !selected[i];
-        if (selected.filter(item => item === true).length === 3) {
-            this.setState({
-                seeBtnEnable: true,
-            });
-        } else {
-            this.setState({
-                seeBtnEnable: false,
-            });
-        }
 
         selected.forEach((item, i) => {
             if (item) {
@@ -51,27 +48,26 @@ class TraitComponent extends Component {
         const feed = this.props.feed;
 
         feed.forEach((item, i) => {
-            if (item.gsx$person.$t === personItem
+            if (item.gsx$person.$t.toUpperCase() === personItem
                 && traitItems.includes(item.gsx$trait.$t.toLowerCase())) {
                 showCases.push(item);
             }
         });
-        this.props.onToggle(this.state.selected, traitItems, showCases, false, true);
+        this.props.onToggle(this.state.selected, traitItems, showCases);
     }
 
     render() {
-        // console.log(this.state.selected);
+        const data = this.props.data;
+        const selected = this.state.selected.filter(item => item === true);
+        const unselectedLength = 3 - selected.length;
         const wrapperClass = classNames({
             'trait-wrapper': true,
             active: this.props.show,
         });
         const btnClass = classNames({
             'btn-see': true,
-            active: this.state.seeBtnEnable,
+            active: selected.length === 3,
         });
-        const data = this.props.data;
-        const selected = this.state.selected.filter(item => item === true);
-        const unselectedLength = 3 - selected.length;
         const listItems = data.map((item, i) =>
             <li key={item.name}>
                 <label>

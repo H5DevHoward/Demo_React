@@ -5,26 +5,28 @@ class FilterWrapperComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            navItems: props.dataNav,
-            showItems: props.dataImg[0],
+            nav: props.data,
+            show: props.data[0].items,
         };
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(i, imgs) {
+    handleClick(imgs) {
         this.setState({
-            showItems: imgs[i],
+            show: imgs,
         });
     }
 
 
     render() {
-        const showItems = _.shuffle(this.state.showItems);
-        const navItems = this.state.navItems.map((item, i) =>
+        const showItems = _.shuffle(this.state.show);
+        const navItems = this.state.nav.map((item, i) =>
             <span
                 className="nav-item"
-                key={item}
-                onClick={this.handleClick.bind(this, i, this.props.dataImg)}>
-                {item}
+                key={item.name}
+                onClick={() => this.handleClick(item.items)}>
+                {item.name}
             </span>
         );
         const imgItems = showItems.map(item =>
