@@ -43,6 +43,7 @@ const config = {
         colors: true,
         historyApiFallback: true,
         inline: true,
+        open: true,
     },
 };
 
