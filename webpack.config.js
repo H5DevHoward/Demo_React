@@ -40,6 +40,7 @@ const config = {
     ],
     devServer: {
         contentBase: './dev',
+        port: 9000,
         colors: true,
         historyApiFallback: true,
         inline: true,

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import classNames from 'classnames';
 
-class ButtonStart extends Component {
+export default class ButtonStart extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
@@ -24,5 +24,3 @@ class ButtonStart extends Component {
         );
     }
 }
-
-export default ButtonStart;
