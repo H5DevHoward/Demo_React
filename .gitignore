@@ -4,3 +4,4 @@ dist
 .svn
 .sass-cache
 .tmp
+.vscode
