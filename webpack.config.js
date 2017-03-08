@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const postcssConfig = require('./postcss.config.js');
 
-const BUILD_DIR = path.resolve(__dirname, 'dev');
+const BUILD_DIR = path.resolve(__dirname, 'dist');
 const DEV_DIR = path.resolve(__dirname, 'dev/script/');
 
 const config = {
@@ -18,6 +18,9 @@ const config = {
     },
     module: {
         loaders: [{
+            test: /\.html$/,
+            loader: 'file?name=[name].[ext]',
+        }, {
             test: /\.json$/,
             loader: 'json',
         }, {
@@ -25,8 +28,14 @@ const config = {
             include: DEV_DIR,
             loader: 'babel',
         }, {
+            test: /\.css$/,
+            loader: 'style!css?sourceMap!',
+        }, {
             test: /\.scss$/,
             loader: 'style!css?sourceMap!postcss!sass',
+        }, {
+            test: /\.(jpg|jpeg|png|gif)$/,
+            loader: 'url-loader?mimetype=image/png',
         }],
     },
     devtool: 'eval-source-map',
