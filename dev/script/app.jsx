@@ -5,10 +5,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // import AwesomeComponent from './component/AwesomeComponent.jsx';
-// import CalculatorComponent from './component/CalculatorComponent.jsx';
+import CalculatorComponent from './component/CalculatorComponent.jsx';
 // import NavMenuComponent from './component/NavMenuComponent.jsx';
 // import EditComponent from './component/EditComponent.jsx';
-import ShoppingCartComponent from './component/ShoppingCartComponent.jsx';
+// import ShoppingCartComponent from './component/ShoppingCartComponent.jsx';
 // import SearchComponent from './component/SearchComponent.jsx';
 // import FilterComponent from './component/FilterComponent.jsx';
 import Test from './component/Test.jsx';
@@ -20,7 +20,7 @@ import Test from './component/Test.jsx';
 
 ReactDOM.render(
     <div>
-        <ShoppingCartComponent />
+        <CalculatorComponent />
         <Test />
     </div>,
     document.getElementById('root')
